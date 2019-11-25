@@ -1,3 +1,4 @@
 # PythonWorkroom
 Random Python projects.
-This is a change to demonstrate git branches and commits, I think...
+It contains exercises, experiments, and solutions to things like LeetCode problems.
+
