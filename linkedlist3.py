@@ -139,3 +139,5 @@ ll.append(5)
 print(ll.display())
 
 print(ll.find(5))
+
+print('-' * 100)
