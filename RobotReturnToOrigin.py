@@ -24,6 +24,15 @@ def robot(moves: str):
     else:
         return False
 
-m = 'UP'
+def robotoptomized(m: str):
+
+    if m.count('L') != m.count('R') or m.count('U') != m.count('D'):
+        return False
+    else:
+        return True
+
+
+m = 'UDLR'
 
 print(robot(m))
+print(robotoptomized(m))

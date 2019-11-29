@@ -29,3 +29,7 @@ print(x)
 x -= 1
 print(x)
 
+
+m = 'LRLLRLLR'
+
+print(m.count('L'))
