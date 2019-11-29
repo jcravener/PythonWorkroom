@@ -22,3 +22,10 @@ def fib(n):
 
 for n in range(10): print(fib(n))
 
+print()
+x = 0
+x += 1
+print(x)
+x -= 1
+print(x)
+
