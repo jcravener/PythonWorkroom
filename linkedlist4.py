@@ -8,6 +8,7 @@ class node():
 class linekedlist():
     def __init__(self):
         self.head = node()
+        self.length = 0
     
     def append(self,data):
         new_node = node(data)
@@ -18,6 +19,7 @@ class linekedlist():
         
         cur_node.next = new_node
         new_node.prev = cur_node
+        self.length += 1
     
     def display(self):
         cur_node = self.head
@@ -58,8 +60,49 @@ class linekedlist():
             cur_idx += 1
         
         return None
+    
+    def size(self):
+        return self.length
 
+    def remove(self, index):
+        cur_node = self.head
+        cur_idx = 0
 
+        while cur_node.next != None:
+            cur_node = cur_node.next
+            prv_node = cur_node.prev
+            nxt_node = cur_node.next
+
+            if cur_idx == index:
+                prv_node.next = nxt_node
+                nxt_node.prev = prv_node
+                self.length -= 1
+                return
+            
+            cur_idx += 1
+
+        return None
+
+    def insert(self,index,data):
+        new_node = node(data)
+        cur_node = self.head
+        cur_idx = 0
+
+        while cur_node.next != None:
+            cur_node = cur_node.next
+            prv_node = cur_node.prev
+
+            if cur_idx == index:
+                prv_node.next = new_node
+                new_node.prev = prv_node
+                new_node.next = cur_node
+                cur_node.prev = new_node
+                self.length += 1
+                return
+            
+            cur_idx += 1
+        
+        return None
 
 #------------------------------------------------------------------------
 
@@ -73,3 +116,15 @@ print(ll.findval(4))
 print()
 print(ll.getindex(4))
 
+print()
+print(ll.size())
+
+print()
+ll.remove(4)
+ll.display()
+print(ll.size())
+
+print()
+ll.insert(4,99)
+ll.display()
+print(ll.size())
