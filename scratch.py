@@ -1,3 +1,36 @@
+#
+# Example 1:
+#
+#    Tree 1     Tree 2
+#
+#      1          2
+#     / \        / \
+#    3   2      1   3
+#   /            \   \
+#  5              4   7
+#
+#  Output:
+#
+#        Merged Tree
+#
+#            3
+#           / \
+#          4   5
+#         / \   \
+#        5   4   7
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 def nfactorial(n: int):
 
