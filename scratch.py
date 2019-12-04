@@ -37,3 +37,16 @@ print(m.count('L'))
 l = [[0,1,2],[3,4,5]]
 
 print(l[:])
+
+
+l = [-3, -1, 0, 3,5,6,-4]
+
+print()
+print(l)
+l.sort()
+print(l)
+
+r = [i**2 for i in l]
+r.sort()
+print(r)
+
