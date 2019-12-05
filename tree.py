@@ -68,26 +68,48 @@ class tree():
             
             if cur_node.right:
                 q.append(cur_node.right)
+    
+    def bfs_find(self, data):  # this was the first ver of solution for LeetCode 700
+        q = []
+        q.append(self)
 
+        while len(q):
+            cur_node = q.pop(0)
 
+            if cur_node.data == data:
+                return cur_node
 
+            if cur_node.left:
+                q.append(cur_node.left)
+            
+            if cur_node.right:
+                q.append(cur_node.right)
+    
+    def searchBST(self, root, val):  # this was the second, much fater, solution for LeetCoce 700
 
+        if not root:
+            return None
+        elif root.data == val:
+            return root
+        elif val < root.data: # take advantage of BST property left child smaller than root
+            return self.searchBST(root.left, val)
+        else: # take advantage of BST property right child larger than root
+            return self.searchBST(root.right, val)
 
 #------------------------------------------------------------------------
 
-t = tree(10)
-t.insert_left(9)
-t.insert_right(12)
-t.insert_left(8)
-t.insert_right(13)
+t = tree(4)
+t.left = tree(2)
+t.right = tree(7)
+(t.left).left = tree(1)
+(t.left.right) = tree(3)
 
-t.preorder_dfs()
-
-print()
-t.inorder_dfs()
-
-print()
-t.postorder_dfs()
 
 print()
 t.bfs()
+
+print()
+(t.bfs_find(2)).bfs()
+
+print()
+(t.searchBST(t,2)).bfs()
