@@ -17,6 +17,7 @@ def minDeletionSize(A):
             prev_c = cur_c
     return D
 
+
 #A = ["cba","daf","ghi"]
 #A = ["a", "b"]
 A = ["zyx","wvu","tsr"]
