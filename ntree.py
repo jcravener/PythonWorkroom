@@ -4,15 +4,11 @@
 class ntree:
     def __init__(self, data=None):
         self.data = data
-        self.children = None
+        self.children = []
     
     def addchild(self, data):
         cur_node = self
-        new_node = ntree(data)
-
-        if cur_node.children == None:
-            cur_node.children = []
-        
+        new_node = ntree(data)        
         cur_node.children.append(new_node)
     
     def getroot(self):
@@ -40,14 +36,17 @@ class ntree:
     
         return r[::-1]
 
-    def recurse_traverse(self):  #-- now need to do a recursive implmentation.  
+    def recurse_traverse(self):  #-- now need to do a recursive implmentation.
         cur_node = self
-        
 
+        if not cur_node:
+            return []
+        
         r = [cur_node.data]
 
-        def helper(rt: ntree):
-            for c in rt.children:
+        def helper(nd: ntree):
+            
+            for c in nd.children:
                 r.append(c.data)
                 helper(c)
         
