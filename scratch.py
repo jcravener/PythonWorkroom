@@ -32,6 +32,7 @@
 
 
 
+
 def nfactorial(n: int):
 
     if n == 0:
@@ -82,4 +83,34 @@ print(l)
 r = [i**2 for i in l]
 r.sort()
 print(r)
+
+def revstr(s: str):
+    if len(s) == 0:
+        return '----'
+    else:
+        return revstr(s[1:]) + s[0]
+
+print(revstr("john"))
+
+def perm(s: str):
+    
+    r = []
+    
+    if len(s) == 1:
+        return s
+    else:
+        for i in range(len(s)):
+            for p in perm(s[:i] + s[i+1:]):
+                r.append(s[i] + p)
+    return r
+
+print(perm('john'))
+
+
+
+
+
+
+
+
 
