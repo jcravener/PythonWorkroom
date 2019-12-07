@@ -25,7 +25,7 @@ class ntree:
         q = [self]
 
         while q:
-            cur_node = q.pop()
+            cur_node = q.pop(0)
             
             if cur_node:  #-- not sure why I have to do this check but LeetCode faild the 2nd testcase withou it.  Not sure how a you would instatiate a None ntree
                 r.append(cur_node.data)
@@ -43,19 +43,21 @@ class ntree:
             return []
         
         r = []
+        r.append(cur_node.data)
 
         def helper(nd: ntree):
             
             for c in nd.children:
-                helper(c)
                 r.append(c.data)
+                helper(c)
                 
         helper(cur_node)
-        r.append(cur_node.data)
         return r
 
-nt = ntree(10)
-for d in range(5,9,1): nt.addchild(d)
-for d in range(0,4,1): (nt.children[0]).addchild(d)
+nt = ntree(1)
+nt.addchild(3)
+nt.addchild(2)
+nt.addchild(4)
+for d in range(5,7,1): (nt.children[0]).addchild(d)
 print(nt.traverse())
 print(nt.recurse_traverse())
