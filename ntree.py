@@ -41,9 +41,21 @@ class ntree:
         return r[::-1]
 
     def recurse_traverse(self):  #-- now need to do a recursive implmentation.  
-        return None
+        cur_node = self
+        
+
+        r = [cur_node.data]
+
+        def helper(rt: ntree):
+            for c in rt.children:
+                r.append(c.data)
+                helper(c)
+        
+        helper(cur_node)
+        return r
 
 nt = ntree(10)
 for d in range(5,9,1): nt.addchild(d)
 for d in range(0,4,1): (nt.children[0]).addchild(d)
 print(nt.traverse())
+print(nt.recurse_traverse())
