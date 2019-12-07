@@ -25,16 +25,13 @@ class ntree:
         q = [self]
 
         while q:
-            cur_node = q.pop(0)
-            
-            if cur_node:  #-- not sure why I have to do this check but LeetCode faild the 2nd testcase withou it.  Not sure how a you would instatiate a None ntree
-                r.append(cur_node.data)
+            cur_node = q.pop()
+            r.append(cur_node.data)
 
-                if cur_node.children:
-                    for c in cur_node.children:
-                        q.append(c)
-    
-        return r[::-1]
+            if cur_node.children:
+                for c in cur_node.children[::-1]:
+                    q.append(c)        
+        return r
 
     def recurse_traverse(self):  #-- now need to do a recursive implmentation.
         cur_node = self
