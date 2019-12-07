@@ -42,15 +42,16 @@ class ntree:
         if not cur_node:
             return []
         
-        r = [cur_node.data]
+        r = []
 
         def helper(nd: ntree):
             
             for c in nd.children:
-                r.append(c.data)
                 helper(c)
-        
+                r.append(c.data)
+                
         helper(cur_node)
+        r.append(cur_node.data)
         return r
 
 nt = ntree(10)
