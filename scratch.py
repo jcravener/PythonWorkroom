@@ -107,6 +107,30 @@ def perm(s: str):
 print(perm('john'))
 
 
+l = ["901 mail.com","50 yahoo.com","900 google.mail.com","5 wiki.org","5 org","1 intel.mail.com","951 com"]
+
+class info:
+    def __init__(self):
+        self.name = None
+        self.count = None
+    
+
+r = []
+for a in l:
+    tmp = a.split(' ')
+    o = info()
+    o.count = tmp[0]
+    o.name = tmp[1]
+
+    r.append(o)
+
+for e in r:
+    print(e.name, e.count)
+
+    
+    
+
+
 
 
 
