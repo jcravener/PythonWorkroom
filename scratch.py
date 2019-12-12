@@ -166,3 +166,10 @@ o = john(5)
 print(o.getdata())
 
 
+c = "usdruypficfbpfbivlrhutcgvyjenlxzeovdyjtgvvfdjzcmikjraspdfp"
+print(len(c))
+c.replace("u","")
+print(len(c.replace("u","",1)))
+
+
+
