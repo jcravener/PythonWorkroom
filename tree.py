@@ -52,7 +52,13 @@ class tree():
         if self.left:
             self.left.postorder_dfs()
         
-        print(self.data)
+        #print(self.data)
+        return self.data
+
+    def get_postorder_dfs(self):
+        r = []
+        r.append(self.postorder_dfs())
+        return r
 
     def bfs(self):
         q = []
@@ -96,13 +102,43 @@ class tree():
         else: # take advantage of BST property right child larger than root
             return self.searchBST(root.right, val)
 
+
+
+def dfs(r: tree):
+
+    s = [r]
+    l = []
+
+    while s:
+        cur_node = s.pop()
+
+        if cur_node.left:
+            s.append(cur_node.left)
+
+        l.append(cur_node.data)
+
+        if cur_node.right:
+            s.append(cur_node.right)
+    
+    return l
+
+def inorderdfs(r :tree):
+
+    l = []
+
+    if r:
+        l = inorderdfs(r.left)
+        l.append(r.data)
+        l = l + inorderdfs(r.right)
+    return l
+
 #------------------------------------------------------------------------
 
-t = tree(4)
-t.left = tree(2)
-t.right = tree(7)
-(t.left).left = tree(1)
-(t.left.right) = tree(3)
+t = tree(5)
+t.left = tree(3)
+t.right = tree(6)
+(t.left).left = tree(2)
+(t.left.right) = tree(4)
 
 
 print()
@@ -113,3 +149,18 @@ print()
 
 print()
 (t.searchBST(t,2)).bfs()
+
+print()
+print(t.get_postorder_dfs())
+
+print()
+print(t.postorder_dfs())
+
+print()
+print(dfs(t))
+
+print()
+t.inorder_dfs()
+
+print()
+print(inorderdfs(t))
