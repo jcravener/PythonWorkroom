@@ -132,6 +132,22 @@ def inorderdfs(r :tree):
         l = l + inorderdfs(r.right)
     return l
 
+def iterativedfs(r: tree):
+    s = [r]
+    v = set()
+    l = []
+    
+    while s:
+        cur_node = s.pop()        
+        v.add(cur_node)
+        l.append(cur_node.data)
+        if cur_node.right and cur_node.right not in v:
+            s.append(cur_node.right)
+        if cur_node.left and cur_node.left not in v:
+            s.append(cur_node.left)
+    return l
+
+
 #------------------------------------------------------------------------
 
 t = tree(5)
@@ -164,3 +180,6 @@ t.inorder_dfs()
 
 print()
 print(inorderdfs(t))
+
+print()
+print(iterativedfs(t))
