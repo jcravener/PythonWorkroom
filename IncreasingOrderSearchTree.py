@@ -4,20 +4,46 @@ class node:
         self.left = None
         self.right = None
 
-def display(nd: node):
-    return inoder_dsf(nd)
+class Solution:
+    def increasingBST(self, root: node):
+        l = self.inorder_traversal(root)
 
-def inoder_dsf(nd: node):
-    if nd.left:
-        inoder_dsf(nd.left)
-    return nd.val
-    if nd.right:
-        inoder_dsf(nd.right)
+        cur_node = node(l[0])
+        rt = cur_node
 
+        for v in l[1:]:
+            cur_node.right = node(v)
+            cur_node = cur_node.right
+        
+        return rt
+    
+    def inorder_traversal(self, root: node):
+        l = []
 
-nd = node(5)
-nd.left = node(3)
-nd.right = node(6)
+        if root:
+            l = self.inorder_traversal(root.left)
+            l.append(root.val)
+            l = l + self.inorder_traversal(root.right)
+        
+        return l
 
+r = node(5)
+r.left = node(3)
+r.right = node(6)
 
-print(inoder_dsf(nd))
+(r.left).left = node(2)
+(r.left).right = node(4)
+
+(r.right).right = node(8)
+
+s = Solution()
+print(s.inorder_traversal(r))
+rr = s.increasingBST(r)
+
+l = []
+cur_node = rr
+l.append(cur_node.val)
+while cur_node.right != None:
+    cur_node = cur_node.right
+    l.append(cur_node.val)
+print(l)
