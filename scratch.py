@@ -18,7 +18,30 @@
 #          4   5
 #         / \   \
 #        5   4   7
-
+#
+#
+#
+#
+#
+#  N-ary Tree:
+#
+#
+#
+#
+#
+#
+#
+#
+# 
+#
+#
+#
+#
+#
+#
+#
+#
+#
 
 
 
@@ -127,14 +150,26 @@ for a in l:
 for e in r:
     print(e.name, e.count)
 
-    
-    
+print("-" * 60)
+
+class john:
+    dp = {}
+
+    def __init__(self,i: int):
+
+        self.data = i
+
+    def getdata(self):
+        return self.data, self.dp
+
+o = john(5)
+print(o.getdata())
 
 
-
-
-
-
+c = "usdruypficfbpfbivlrhutcgvyjenlxzeovdyjtgvvfdjzcmikjraspdfp"
+print(len(c))
+c.replace("u","")
+print(len(c.replace("u","",1)))
 
 
 
