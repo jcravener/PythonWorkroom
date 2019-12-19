@@ -16,8 +16,6 @@ def fcc(A: []):
         pat = re.compile(k)
         for w in A:
             (d[k]).append(len(re.findall(pat,w)))
-    
-    for k in d.keys():
         for i in range(min(d[k])):
             r.append(k)
     
