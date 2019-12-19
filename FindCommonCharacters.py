@@ -1,28 +1,29 @@
 
-
+import re
 
 
 def fcc(A: []):
 
-    d = dict()
-    l_len = len(A)
     r = []
+    d = {}
 
     for w in A:
         for c in w:
-            if c in d:
-                d[c] += 1
-            else:
-                d[c] = 1
-            
-    for i in d.items():
-        k, v = i
-        if v < l_len: continue
-        for n in range(v//l_len):
+            if c not in d:
+                d[c] = []
+    
+    for k in d.keys():
+        pat = re.compile(k)
+        for w in A:
+            (d[k]).append(len(re.findall(pat,w)))
+    
+    for k in d.keys():
+        for i in range(min(d[k])):
             r.append(k)
-            print(i)
     
     return r
+
+
 
 l = ["bella","label","roller"]
 print(fcc(l))
