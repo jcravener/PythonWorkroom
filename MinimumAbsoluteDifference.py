@@ -3,19 +3,19 @@
 
 def mad(arr: []):
     arr.sort()
-    d = {}
+    r = []
     lowest = arr[1] - arr[0]
 
     for i in range(len(arr)-1):
         diff = arr[i+1] - arr[i]
         if diff < lowest:
+            r = []
+            r.append([arr[i],arr[i+1]])
             lowest = diff
-        if diff not in d:
-            d[diff] = [[arr[i],arr[i+1]]]
-        else:
-            (d[diff]).append([arr[i],arr[i+1]])
+        elif diff == lowest:
+            r.append([arr[i],arr[i+1]])
 
-    return d[lowest]
+    return r
 
 arr = [4,2,1,3]
 print(mad(arr))
