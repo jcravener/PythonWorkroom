@@ -1,6 +1,4 @@
 
-
-
 def mad(arr: []):
     arr.sort()
     r = []
