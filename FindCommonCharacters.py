@@ -1,28 +1,30 @@
 
-
-
-
 def fcc(A: []):
 
-    d = dict()
-    l_len = len(A)
-    r = []
+    l = []
 
     for w in A:
+        d = {}
         for c in w:
-            if c in d:
-                d[c] += 1
-            else:
+            if c not in d:
                 d[c] = 1
-            
-    for i in d.items():
-        k, v = i
-        if v < l_len: continue
-        for n in range(v//l_len):
-            r.append(k)
-            print(i)
+            else:
+                d[c] += 1
+        l.append(d)
     
-    return r
+    dd = {}
+
+    for d in l:
+        for k,v in d.items():
+            if k not in dd:
+                
+    
+    return l
+
+
+
+                
+        
 
 l = ["bella","label","roller"]
 print(fcc(l))
