@@ -27,6 +27,12 @@ class Solution:
         
         return l
 
+    def stack_traversal(self, root: node):
+        s = []
+        r = []
+        s.append(root)
+
+
 r = node(5)
 r.left = node(3)
 r.right = node(6)
