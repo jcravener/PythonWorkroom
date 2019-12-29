@@ -7,6 +7,9 @@ class node:
 
 def getleaves(r: node):
 
+    if not r:
+        return []
+    
     l = []
     q = [r]
     lv = []
@@ -24,11 +27,14 @@ def getleaves(r: node):
         if cur_node.right:
             q.append(cur_node.right)
     
-    return l, lv
+    return lv
 
 
 def getleavesdfs(r:node):
 
+    if not r:
+        return []
+    
     lv = []
 
     if r.left:
@@ -39,6 +45,29 @@ def getleavesdfs(r:node):
         lv = lv +  getleavesdfs(r.right)
     
     return lv
+
+def leafSimilar(root1: node, root2: node):
+    
+    if root1 == None and root2:
+        return False
+    if root2 == None and root1:
+        return False
+    
+    #---bsf will not work becuse it doesn't preserver the order accross trees.
+    #lv1 = getleaves(root1) 
+    #lv2 = getleaves(root2)
+    lv1 = getleavesdfs(root1)
+    lv2 = getleavesdfs(root2)
+
+    if len(lv1) != len(lv2):
+        return False
+    
+    for i in range(len(lv1)):
+        if lv1[i] != lv2[i]:
+            return False
+    
+    return True
+
 
 
 r = node(3)
@@ -53,7 +82,16 @@ r.right = node(1)
 (r.right).left = node(9)
 (r.right).right = node(8)
 
-print(getleaves(r))
+print(getleaves(r.left))
+print(getleavesdfs(r.right))
 
-print(getleavesdfs(r))
+print(leafSimilar(r.left, r.right))
+
+a = [i for i in range(10)]
+b = [i for i in range(10)]
+
+if a == b:
+    print(a,b)
+
+
 
