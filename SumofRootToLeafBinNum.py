@@ -8,7 +8,7 @@ def inorderdfs(r: TreeNode):
     if r == None:
         return None
     
-    s = [[r, ""]]
+    s = [[r, ""]]  #--- going to store each path as a string of vals with the traversal.
 
     while s:
         cur_node, path = s.pop()
