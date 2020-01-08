@@ -1,5 +1,3 @@
-Python BFS | Keeping stack of current node and depth in 2 element list
-
 class TreeNode:
     def __init__(self, x):
         self.val = x
