@@ -4,12 +4,11 @@ def lastStoneWeight(stones: [int]) -> int:
         
     while len(stones) > 1:
         stones.sort()
-        q = []
-        q.append(stones.pop())
-        q.append(stones.pop())
+        x, y = stones[-2:]
+        stones = stones[:-2]
 
-        if q[0] != q[1]:
-            stones.append(q[0] - q[1])
+        if x != y:
+            stones.append(y-x)
     
     if len(stones) == 0:
         return 0
@@ -34,5 +33,5 @@ def helper(stns: [int]) -> [int]:
     
     return stns
 
-s = [2,7,4,1,8,1,1]
+s = [2,7,4,1,8,1]
 print(lastStoneWeight(s))
