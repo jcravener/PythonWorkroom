@@ -1,6 +1,7 @@
 
 # LeetCode: 985. Sum of Even Numbers After Queries
 # Solution was in LeetCode dicussions...
+# My first attempt worked, but was too slow with large test cases
 
 def sumEvenAfterQueries(A: [int], queries: [[int]]) -> [int]:
     if len(A) == 0 or len(queries) == 0:
