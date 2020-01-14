@@ -19,7 +19,7 @@ def sumEvenAfterQueries(A: [int], queries: [[int]]) -> [int]:
             if q[0]%2 != 0: #-- both are odd, making even so needs to be added tp sum
                 cur_sum += A[q[1]] + q[0]
         
-        #---now update list:
+        #---now update list and just go back, working with the latess sum
         A[q[1]] += q[0]
         l.append(cur_sum)
     
