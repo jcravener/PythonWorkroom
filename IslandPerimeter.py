@@ -5,12 +5,34 @@ def islandPerimeter(grid: [[int]]) -> int:
 
     if len(grid) == 0:
         return 0
+    
+    perim = 0
 
-    for r in range(len(grid)):
-        for c in range(len(grid[r])):
-            if grid[r][c] == 1:
-                size = getRegionSize(grid, r, c)
-    return size, len(grid) * len(grid[r])
+    #--count bit=flips, row by row
+    for i in range(len(grid)):
+        cur_bit_val = 0
+        for j in range(len(grid[i])):
+            if grid[i][j] != cur_bit_val:
+                cur_bit_val = grid[i][j]
+                perim += 1
+
+            #---if you hit the boarder and you're on a 1, increment perim
+            if j == len(grid[i]) - 1 and cur_bit_val == 1:
+                perim += 1
+
+    #---count bit-flips, column by column
+    for j in range(len(grid[0])):
+        cur_bit_val = 0
+        for i in range(len(grid)):
+            if grid[i][j] != cur_bit_val:
+                cur_bit_val = grid[i][j]
+                perim += 1
+            
+            #---if you hit the boarder and you're on a 1, increment perim
+            if i == len(grid) - 1 and cur_bit_val == 1:
+                perim +=1
+    
+    return perim
 
 # -- This is a grid DFS
 #
@@ -30,9 +52,9 @@ def getRegionSize(grid: [[int]], row: int, col: int):
                 sz += getRegionSize(grid, r, c)
     return sz
 
-g = [[0,1,0,0],
- [1,1,1,0],
- [0,1,0,0],
- [1,1,0,0]]
+g = [[0,1,0,0,0],
+     [1,1,1,1,1],
+     [0,1,0,0,0],
+     [1,1,0,0,0]]
 
 print(islandPerimeter(g))
