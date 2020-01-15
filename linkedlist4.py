@@ -136,6 +136,29 @@ def llMergeCheck(l1: node, l2: node):
     
     return None
 
+def llLoopCheck(l1: node):
+
+    if l1 == None or l1.next == None:
+        return None
+    
+    slw = l1
+    fst = l1.next
+
+    s = []
+    f = []
+
+    while slw or fst:
+
+        s.append(slw.data)
+        f.append(fst.data)
+
+        if slw == fst:
+            return slw.data, slw.next.data
+        else:
+            slw = slw.next
+            fst = fst.next.next
+    
+    return None
 
 #------------------------------------------------------------------------
 
@@ -161,3 +184,21 @@ print()
 n1 = l1.getnode(0)
 n2 = l2.getnode(0)
 print(llMergeCheck(n1, n2))
+print(llMergeCheck(n2, n1))
+print()
+
+l3 = linekedlist()
+for i in range(10,20): l3.append(i)
+l3.display()
+(l3.getnode(9)).next = (l3.getnode(5))
+
+n3 = l3.getnode(0)
+
+l = []
+for _ in range(20):
+    l.append(n3.data)
+    n3 = n3.next
+print(l)
+n3 = l3.getnode(0)
+
+print(llLoopCheck(n3))
