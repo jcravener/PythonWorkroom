@@ -144,13 +144,7 @@ def llLoopCheck(l1: node):
     slw = l1
     fst = l1.next
 
-    s = []
-    f = []
-
     while slw or fst:
-
-        s.append(slw.data)
-        f.append(fst.data)
 
         if slw == fst:
             return slw.data, slw.next.data
