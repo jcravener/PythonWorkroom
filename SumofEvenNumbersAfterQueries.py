@@ -17,7 +17,7 @@ def sumEvenAfterQueries(A: [int], queries: [[int]]) -> [int]:
             else:  #-- if the addtion is not even, need to subtract the sum
                 cur_sum -= A[q[1]]
         else:  #-- if odd it's not in cur_sum
-            if q[0]%2 != 0: #-- both are odd, making even so needs to be added tp sum
+            if q[0]%2 != 0: #-- both are odd, making even so needs to be added to sum
                 cur_sum += A[q[1]] + q[0]
         
         #---now update list and just go back, working with the latess sum

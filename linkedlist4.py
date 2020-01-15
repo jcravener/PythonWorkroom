@@ -103,28 +103,61 @@ class linekedlist():
             cur_idx += 1
         
         return None
+    
+    def getnode(self, index):
+        cur_node = self.head
+        cur_idx = 0
+
+        while cur_node.next != 1:
+            cur_node = cur_node.next
+
+            if cur_idx == index:
+                return cur_node
+            
+            cur_idx += 1
+        
+        return None
+
+
+def llMergeCheck(l1: node, l2: node):
+
+    s = set()
+
+    while l1.next:
+        s.add(l1)
+        l1 = l1.next
+    
+    while l2.next:
+        if l2 in s:
+            return l2.data
+        else:
+            s.add(l2)
+        l2 = l2.next
+    
+    return None
+
 
 #------------------------------------------------------------------------
 
-ll = linekedlist()
-for i in range(10): ll.append(i)
-ll.display()
+l1 = linekedlist()
+for i in range(10): l1.append(i)
+l1.display()
 
+l2 = linekedlist()
+for i in range(20,26): l2.append(i)
+l2.display()
 print()
-print(ll.findval(4))
 
-print()
-print(ll.getindex(4))
+n1 = l1.getnode(0)
+n2 = l2.getnode(0)
+print(llMergeCheck(n1, n2))
 
+(l2.getnode(4)).next = (l1.getnode(5))
 print()
-print(ll.size())
+l1.display()
+l2.display()
+print()
 
-print()
-ll.remove(4)
-ll.display()
-print(ll.size())
-
-print()
-ll.insert(4,99)
-ll.display()
-print(ll.size())
+n1 = l1.getnode(0)
+n2 = l2.getnode(0)
+print(llMergeCheck(n1, n2))
