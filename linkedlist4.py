@@ -144,13 +144,13 @@ def llLoopCheck(l1: node):
     slw = l1
     fst = l1.next
 
-    while slw or fst:
+    while slw and fst.next:  #--- need to check fst.next otherwise lists without loop errors
 
         if slw == fst:
             return slw.data, slw.next.data
-        else:
-            slw = slw.next
-            fst = fst.next.next
+        
+        slw = slw.next
+        fst = fst.next.next
     
     return None
 
@@ -222,3 +222,7 @@ n4 = node(0)
 n4.next = n4
 print(llLoopCheck(n4))
 print(llLoopCheckWithSet(n4))
+
+print()
+print(llLoopCheckWithSet(l1.getnode(0)))
+print(llLoopCheck(l1.getnode(0)))
