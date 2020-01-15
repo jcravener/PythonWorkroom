@@ -154,6 +154,25 @@ def llLoopCheck(l1: node):
     
     return None
 
+def llLoopCheckWithSet(l1: node):
+    
+    if l1 == None or l1.next == None:
+        return None
+    
+    s = set()
+    prv = l1
+
+    while l1:
+        if l1 in s:
+            return prv.data, l1.data
+        else:
+            s.add(l1)
+        
+        prv = l1
+        l1 = l1.next
+    
+    return None
+
 #------------------------------------------------------------------------
 
 l1 = linekedlist()
@@ -192,7 +211,14 @@ l = []
 for _ in range(20):
     l.append(n3.data)
     n3 = n3.next
+
 print(l)
 n3 = l3.getnode(0)
-
 print(llLoopCheck(n3))
+print()
+print(llLoopCheckWithSet(n3))
+
+n4 = node(0)
+n4.next = n4
+print(llLoopCheck(n4))
+print(llLoopCheckWithSet(n4))
