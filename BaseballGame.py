@@ -1,13 +1,11 @@
-import re
-
 # LeetCode: 682. Baseball Game
 
 def calPoints(ops:[str]) -> int:
-    pat = re.compile(r"\d")
+    p = "+DC"
     valpts = []
 
     for i in ops:
-        if re.search(pat, i):
+        if i not in p:
             valpts.append(int(i))
         elif i == "+":
             valpts.append(sum(valpts[-2:]))
