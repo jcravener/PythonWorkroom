@@ -86,39 +86,22 @@ def trimBST(root: TreeNode, L: int, R: int) -> TreeNode:
     if not root:
         return None
     
-    a = [i for i in BSFtraversal(root) if i <= L and i >= R]
+    a =  [i for i in BSFtraversal(root) if i >= L and i <= R]
+    r = TreeNode(a[0])
 
-    return a
-    
+    for v in a[1:]:
+        insertBstNode(r, v)
 
-
-
+    return r
 
 h = TreeNode(1)
 h.left = TreeNode(0)
 h.right = TreeNode(2)
-
-a = [i for i in inorderDfsTravers(h) if i >= 1 and i <=  2]
-print(a)
-print(BSFdepth(h))
-print()
+print(BSFtraversal(trimBST(h, 1, 2)))
 
 h = TreeNode(3)
 h.left = TreeNode(0)
 h.right = TreeNode(4)
 (h.left).right = TreeNode(2)
 ((h.left).right).left = TreeNode(1)
-a = [i for i in inorderDfsTravers(h) if i >= 1 and i <=  3]
-print(a)
-print(BSFdepth(h))
-print()
-
-a = [i for i in range(20)]
-r = TreeNode(a[midlist(a)])
-print(inorderDfsTravers(r))
-
-for e in a:
-    insertBstNode(r,e)
-
-print(inorderDfsTravers(r))
-print(BSFdepth(r))
+print(BSFtraversal(trimBST(h, 1, 3)))
