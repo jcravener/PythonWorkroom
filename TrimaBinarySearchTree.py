@@ -94,10 +94,25 @@ def trimBST(root: TreeNode, L: int, R: int) -> TreeNode:
 
     return r
 
+def trimBSTfast(root: TreeNode, L: int, R: int) -> TreeNode:
+    if not root:
+        return None
+    
+    if root.val < L:
+        return trimBSTfast(root.right, L, R)
+    elif root.val > R:
+        return trimBSTfast(root.left, L, R)
+    
+    root.left = trimBSTfast(root.left, L, R)
+    root.right = trimBSTfast(root.right, L, R)
+
+    return root
+
 h = TreeNode(1)
 h.left = TreeNode(0)
 h.right = TreeNode(2)
 print(BSFtraversal(trimBST(h, 1, 2)))
+print(BSFtraversal(trimBSTfast(h,1,2)))
 
 h = TreeNode(3)
 h.left = TreeNode(0)
