@@ -22,6 +22,24 @@ def inorderDfsTravers(rt:TreeNode) -> TreeNode:
     
     return l
 
+def BSFtraversal(rt:TreeNode):
+    if not rt:
+        return None
+    
+    q = [rt]
+    l = []
+
+    while q:
+        cur_node = q.pop(0)
+        l.append(cur_node.val)
+        
+        if cur_node.left:
+            q.append(cur_node.left)
+        if cur_node.right:
+            q.append(cur_node.right)
+    
+    return l
+        
 def insertBstNode(rt:TreeNode, v: int) -> TreeNode:
     if rt == None:
         return None
@@ -32,7 +50,7 @@ def insertBstNode(rt:TreeNode, v: int) -> TreeNode:
             insertBstNode(rt.left, v)
         else:
             rt.left = nnode
-    elif v> rt.val:
+    elif v > rt.val:
         if rt.right:
             insertBstNode(rt.right, v)
         else:
@@ -64,8 +82,17 @@ def BSFdepth(rt:TreeNode):
 def midlist(a:[int]) -> int:
     return len(a)//2
 
-def trimBST(self, root: TreeNode, L: int, R: int) -> TreeNode:
-    return None
+def trimBST(root: TreeNode, L: int, R: int) -> TreeNode:
+    if not root:
+        return None
+    
+    a = [i for i in BSFtraversal(root) if i <= L and i >= R]
+
+    return a
+    
+
+
+
 
 h = TreeNode(1)
 h.left = TreeNode(0)
