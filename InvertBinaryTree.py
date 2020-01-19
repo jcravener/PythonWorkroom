@@ -3,6 +3,10 @@
 # After a bit of thinking, solved it with no research
 # and used itereative DFS approach.
 #
+# After some reseach, added a recursive approach.
+# This used much less code.
+#
+
 
 class TreeNode:
     def __init__(self, x):
@@ -30,6 +34,11 @@ def invertTree(root: TreeNode) -> TreeNode:
 
             cur_node.left, cur_node.right = cur_node.right, cur_node.left            
     
+    return root
+
+def invertTreeRec(root: TreeNode) -> TreeNode:
+    if root:
+        root.left, root.right = invertTreeRec(root.right), invertTreeRec(root.left)
     return root
 
 def BFSdepth(root: TreeNode):
@@ -66,4 +75,4 @@ r.right.left = TreeNode(6)
 r.right.right = TreeNode(9)
 
 print(BFSdepth(r))
-print(BFSdepth(invertTree(r)))
+print(BFSdepth(invertTreeRec(r)))
