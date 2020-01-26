@@ -44,5 +44,28 @@ for c in 'ABCDEFG':
     print(caseSwap(c))
 
 
+def lcperm(s:str):
+    if len(s) == 0:
+        return None
+    
+    perm = [s]
+
+    for i in range(len(s)):
+        if not s[i].isalpha():
+            continue
+        else:
+            cur_perm_len = len(perm)
+
+            for j in range(cur_perm_len):
+                perm_lst = list(perm[j])
+                perm_lst[i] = perm_lst[i].swapcase()
+                perm.append(''.join(perm_lst))
+
+    return perm
+
+s = 'A1b2c3'
+print(lcperm(s))
+
+
 
     
