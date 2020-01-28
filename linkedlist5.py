@@ -45,14 +45,6 @@ def findmerge(n1: Node, n2: Node):
 def findmergeStk(n1: Node, n2: Node):
     stk1 = []
     stk2 = []
-
-    while n1 or n2:
-        if n1:
-            stk1.append(n1)
-            n1 = n1.next
-        if n2:
-            stk2.append(n2)
-            n2 = n2.next
     
     while n1:
         stk1.append(n1)
@@ -61,16 +53,25 @@ def findmergeStk(n1: Node, n2: Node):
         stk2.append(n2)
         n2 = n2.next
 
+    if stk1[len(stk1)-1] != stk2[len(stk2)-1]:  #-- no merge at all
+        return None, None
+
     if len(stk1) > len(stk2):
+        prev = stk2[len(stk2)-1]
         while len(stk2):
             cur1, cur2 = stk1.pop(), stk2.pop()
             if cur1 != cur2:
-                return 'n2', cur2.val
+                return 'n2', prev.val
+            else:
+                prev = cur1
     else:
+        prev = stk1[len(stk1)-1]
         while len(stk1):
             cur1, cur2 = stk1.pop(), stk2.pop()
             if cur1 != cur2:
-                return 'n1', cur1.val
+                return 'n1', prev.val
+            else:
+                prev = cur1
     
     return None
 
@@ -90,3 +91,27 @@ print(listll(l2))
 print(findmerge(l1, l2))
 print()
 print(findmergeStk(l1, l2))
+print()
+
+la = Node(4)
+la.next = Node(1)
+lb = Node(5)
+lb.next = Node(0)
+lb.next.next = Node(1)
+lc = Node(8)
+lc.next = Node(4)
+lc.next.next = Node(5)
+
+print(listll(la))
+print(listll(lb))
+print(listll(lc))
+print(findmerge(la, lb))
+print(findmergeStk(la,lb))
+print()
+(getnode(la, 1)).next = lc
+(getnode(lb, 1)).next = lc
+print(listll(la))
+print(listll(lb))
+print(findmerge(la, lb))
+print(findmergeStk(la, lb))
+
