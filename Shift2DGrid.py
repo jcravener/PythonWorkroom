@@ -3,7 +3,7 @@
 # LeetCode: 1260. Shift 2D Grid
 
 def shiftGrid(grid: [[int]], k: int) -> [[int]]:
-    ilen = len(grid)
+    ilen = len(grid[0])
     
     l = []
     for i in grid:
