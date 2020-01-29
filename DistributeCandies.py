@@ -17,6 +17,20 @@ def distributeCandies(candies: [int]) -> int:
 
     return min(mx, len(d))
 
+def distributeCandiesSt(candies: [int]) -> int:
+    ln = len(candies)
+
+    if ln == 0:
+        return []
+    
+    st = set(candies)
+
+    return min(len(st), ln//2)
+
+
 candies = [1,1,2,2,3,3]
+print(distributeCandies(candies))
+print(distributeCandiesSt(candies))
 candies = [1,1,2,3]
 print(distributeCandies(candies))
+print(distributeCandiesSt(candies))
