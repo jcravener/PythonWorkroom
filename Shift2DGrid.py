@@ -4,7 +4,6 @@
 
 def shiftGrid(grid: [[int]], k: int) -> [[int]]:
     ilen = len(grid)
-    jlen = len(grid[0])
     
     l = []
     for i in grid:
@@ -13,13 +12,21 @@ def shiftGrid(grid: [[int]], k: int) -> [[int]]:
     
     if k == lenl:
         return grid
-    elif k < lenl:
-        # shift by k
-        ll = l[:k] + l[k:]
-    #else:
-        # shift by k%lenl
+    elif k > lenl:
+        k = k%lenl
 
-    return l, ll
+    l = l[lenl-k:] + l[:lenl-k]
+    ll = []
+    tmp = []
+
+    for e in l:
+        tmp.append(e)
+
+        if len(tmp) == ilen:
+            ll.append(tmp)
+            tmp = []
+    
+    return ll
 
 grid = [[1,2,3],[4,5,6],[7,8,9]]
 k = 1
