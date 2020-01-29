@@ -18,3 +18,41 @@ print(perm(s))
 
 
 
+
+
+
+
+def perm2(s:str):
+    if len(s) == 1:
+        return s
+    
+    l = []
+
+    for i in range(len(s)):
+        for p in perm2(s[:i]+s[i+1:]):
+            l.append(s[i]+p)
+    
+    return l
+
+print(perm2('101'))
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
