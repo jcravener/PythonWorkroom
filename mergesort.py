@@ -3,62 +3,73 @@ import random
 
 # Merge Sort Study
 
-def mergesort(a: [int], left:int, right:int):
-    if left == right:
+def mergesort(a:[int]):
+    if len(a) == 1:
         return a
     
-    #-- split array into 2 and pass back to mergesort
+    #start = 0
+    #end = len(a) # -- st frist, I was defining end = len(a)-1 and this resulted in a maximum recursion depth exceeded error
+    #mid = (start + end)//2
+    mid = len(a)//2  #-- both this and the above methods for finding mid works
 
-    mid = (left + right) // 2
+    lft = mergesort(a[:mid])
+    rt = mergesort(a[mid:])
+    a = merge(lft,rt)
+    return a
 
-    print(l[left:mid], l[mid:right])
-    return merge(l[left:mid], l[mid:right])
-
-def merge(l:[], r:[]):
-    if len(l) == 0:
-        return r
-    if len(r) == 0:
-        return l
+def merge(l, r):
     tmp = []
+    li, ri = 0, 0
 
-    if len(l) < len(r):
-        for i in range(len(l)):
-            if l[i] < r[i]:
-                tmp.append(l[i])
-                tmp.append(r[i])
-            else:
-                tmp.append(r[i])
-                tmp.append(l[i])
-        tmp += r[len(l):]  
-    else:
-        for i in range(len(r)):
-            if l[i] < r[i]:
-                tmp.append(l[i])
-                tmp.append(r[i])
-            else:
-                tmp.append(r[i])
-                tmp.append(l[i])
+    while li < len(l) and ri < len(r):
+        if l[li] < r[ri]:
+            tmp.append(l[li])
+            li += 1
+        else:
+            tmp.append(r[ri])
+            ri += 1
     
-    if len(l) > len(r):
-        tmp += l[len(r):]
+    if len(l[li:]) < len(r[ri:]):
+        tmp += r[ri:]
+    if len(r[ri:]) < len(l[li:]):
+        tmp += l[li:]
 
     return tmp
 
 
+#-- this is from leetcode: https://leetcode.com/problems/sort-an-array/discuss/455034/Python-Clean-Merge
+#
+def sortArray(nums:[int]) -> [int]:
+        if len(nums) <= 1: return nums
+        mid = len(nums)//2
+        left = sortArray(nums[:mid])
+        right = sortArray(nums[mid:])
+        l,r = 0,0
+        sorted_nums = []
+        while l < len(left) and r < len(right):
+            if left[l] < right[r]:
+                sorted_nums.append(left[l])
+                l+=1
+            else:
+                sorted_nums.append(right[r])
+                r+=1
+        sorted_nums.extend(left[l:])
+        sorted_nums.extend(right[r:])
+        return sorted_nums
 
 
-
-
-    
-
-
-
-
-
-r = 19
+r = 9
 l = []
 for _ in range(r):
     l.append(random.randrange(r)-1)
 
+mid = (0 + len(l))//2
 print(l)
-print(mergesort(l, 0, len(l)) )
+a = l[:mid]
+b = l[mid:]
+print(a)
+print(b)
+print(merge(a,b))
+
+#print(sortArray(l))
+print(mergesort(l))
