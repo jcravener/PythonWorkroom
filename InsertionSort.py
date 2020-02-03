@@ -12,8 +12,10 @@ def insertionsort(a:[int]):
         j = i - 1
         while j >= 0:
             if a[j] < cur:
+                a[j], cur = cur, a[j]
 
             j -= 1
+        i += 1
 
     
     return a
