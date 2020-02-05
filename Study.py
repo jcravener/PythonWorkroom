@@ -187,6 +187,105 @@ def findloop(n:node):
 print(findloop(l1))
 
 
+class treeNode:
+    def __init__(self, data = None):
+        self.data = data
+        self.left = None
+        self.right = None
+
+def preDFSrec(rt:treeNode):
+    if rt == None:
+        return None
+    tmp = []
+    
+    tmp.append(rt.data)
+    if rt.left:
+        tmp += preDFSrec(rt.left)
+    if rt.right:        
+        tmp += preDFSrec(rt.right)
+    
+    return tmp
+
+def postDFSrec(rt:treeNode):
+    if rt == None:
+        return None
+    tmp = []
+    
+    if rt.left:
+        tmp += preDFSrec(rt.left)
+    if rt.right:        
+        tmp += preDFSrec(rt.right)
+    tmp.append(rt.data)
+    
+    return tmp
+
+def inDFSrec(rt:treeNode):
+    if rt == None:
+        return None
+    tmp = []
+    
+
+    if rt.left:
+        tmp = preDFSrec(rt.left)
+    tmp.append(rt.data)
+    if rt.right:        
+        tmp += preDFSrec(rt.right)
+
+    return tmp
+
+def BFSit(rt:treeNode):
+    q = [rt]
+    tmp = []
+
+    while q:
+        cur = q.pop(0)
+        tmp.append(cur.data)
+        if cur.left:
+            q.append(cur.left)
+        if cur.right:
+            q.append(cur.right)
+    return tmp
+
+def BFSlevels(rt:treeNode):
+    q = [rt]
+    l = []
+
+    while q:
+        lq = []
+        tmp = []
+        
+        for n in q:
+            tmp.append(n.data)
+            if n.left:
+                lq.append(n.left)
+            if n.right:
+                lq.append(n.right)
+        
+        l.append(tmp)
+        tmp = []
+        q = lq
+        lq = []
+    
+    return l
+        
+
+
+rt = treeNode(19)
+rt.left = treeNode(8)
+rt.left.left = treeNode(6)
+rt.left.right = treeNode(14)
+rt.right = treeNode(30)
+rt.right.left = treeNode(27)
+rt.right.right = treeNode(42)
+
+print(preDFSrec(rt))
+print(postDFSrec(rt))
+print(inDFSrec(rt))
+print(BFSit(rt))
+print(BFSlevels(rt))
+
+
+
 
 
 
