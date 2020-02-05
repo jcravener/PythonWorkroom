@@ -92,3 +92,40 @@ print()
 l = srt.randomList(r)
 print(l)
 print(srt.insertionSort(l))
+
+def perm(s:str):
+
+    tmp = [s]
+
+    for i in range(len(s)):
+        for p in perm(s[:i]+s[i+1:]):
+            tmp.append(p + s[i])
+    
+    return tmp
+
+s = 'abc'
+print()
+print(perm(s))
+
+def palendrone(s:str):
+    slst = list(s)
+
+    while len(slst) >= 2:
+        if slst.pop(0) != slst.pop():
+            return False
+    return True
+
+s = 'racecar'
+print()
+print(palendrone(s))
+
+def revstr(s:str):
+    slst = list(s)
+    r = ""
+
+    while len(slst):
+        r += slst.pop()
+    return r
+
+s = "John Cravener"
+print(revstr(s))
