@@ -129,3 +129,65 @@ def revstr(s:str):
 
 s = "John Cravener"
 print(revstr(s))
+print()
+
+class node:
+    def __init__(self, data = None):
+        self.data = data
+        self.next = None
+
+def listll(n:node):
+    tmp = []
+    
+    while n != None and len(tmp) < 40:
+        tmp.append(n.data)
+        n = n.next
+    return tmp
+
+def findllnode(n:node, v:int):
+   
+    while n != None:
+        if n.data == v:
+            return n
+        n = n.next
+    return None
+
+def buildll(n:node, r:[int]):
+    h = n
+    for d in r:
+        n.next = node(d)
+        n = n.next
+    return h
+
+r = 10
+n = node(0)
+l1 = buildll(n, [i for i in range(1,10)])
+print(listll(l1))
+
+(findllnode(l1,9)).next = (findllnode(l1,5))
+print()
+print(listll(l1))
+
+def findloop(n:node):
+    if n.next == None:
+        return n
+    
+    slow = n
+    fast = slow.next
+
+    while slow and fast:
+        if slow == fast:
+            return slow, slow.data
+        else:
+            slow = slow.next
+            fast = fast.next.next
+    
+    return None
+
+print(findloop(l1))
+
+
+
+
+
+
