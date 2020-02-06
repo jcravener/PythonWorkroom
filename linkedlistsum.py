@@ -24,7 +24,7 @@ def addLinkedListData(l1:node,l2:node):
     l3 = None
     cur = l3
 
-    while l1:  #--- storing linkd list data in arrays
+    while l1:  #--- storing linked list data in arrays
         a1.append(l1.data)
         l1 = l1.next
     while l2:
@@ -44,7 +44,7 @@ def addLinkedListData(l1:node,l2:node):
         l3.next = cur
         cur = l3
     
-    alrg += a1  #--- soring extra data in case one list is longer than the other
+    alrg += a1  #--- storing extra data in case one list is longer than the other
     alrg += a2
 
     while len(alrg) > 0:  #--- adding any extra data to sum
