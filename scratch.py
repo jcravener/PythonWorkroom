@@ -173,3 +173,33 @@ print(len(c.replace("u","",1)))
 
 
 
+class Solution:
+    def numSmallerByFrequency(self, queries: [str], words: [str]) -> [int]:
+        
+        r = []
+        mq = [self.freqsmall(q) for q in queries]
+        mw = [self.freqsmall(w) for w in words]
+        ct = 0
+        
+        mw.sort(reverse=True)
+        
+        for q in mq:
+            for w in mw:
+                if q < w:
+                    ct += 1
+                else:
+                    break
+            r.append(ct)
+            ct = 0
+
+            
+        return r
+        
+    def freqsmall(self, s:str) -> int:
+        mn = min(s)       
+        return s.count(mn)
+
+q = ["bbb","cc"]
+w = ["a","aa","aaa","aaaa"]
+s = Solution()
+print(s.numSmallerByFrequency(q,w))
