@@ -4,14 +4,17 @@
 def fairCandySwap(A:[int], B:[int]) -> [int]:
     asum = sum(A)
     bsum = sum(B)
+    bset = set(B)
+    tmp = 0
 
     #sum(A) - x + y = sum(B) - y + x
     #2*y = sum(B) - sum(A) + 2*x
     #y = (sum(B) - sum(A))//2 + x
 
     for x in A:
-        if (((bsum - asum)/2) + x) in B:
-            return [x,(((bsum - asum)//2) + x)]
+        tmp = ((bsum - asum)//2) + x
+        if tmp in bset:
+            return [x,tmp]
     return None
 
     
