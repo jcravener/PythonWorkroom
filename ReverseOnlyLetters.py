@@ -7,8 +7,7 @@ def reverseOnlyLetters(S: str) -> str:
     a = []
 
     for i in range(len(slst)):
-        oc = ord(slst[i])
-        if (65 <= oc <= 90) or (97 <= oc <= 122):
+        if (slst[i]).isalpha():
             a.append(slst[i])
             slst[i] = None
 
