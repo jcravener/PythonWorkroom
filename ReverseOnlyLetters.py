@@ -15,13 +15,10 @@ def reverseOnlyLetters(S: str) -> str:
             slst[li], slst[ri] = slst[ri], slst[li]
             li += 1
             ri -= 1
-        elif l.isalpha() and (not r.isalpha()):
+        if not r.isalpha():
             ri -= 1
-        elif (not l.isalpha()) and r.isalpha():
+        if not l.isalpha():
             li += 1
-        else:
-            li += 1
-            ri -= 1
 
     return "".join(slst)
 
