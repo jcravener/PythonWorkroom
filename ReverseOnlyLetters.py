@@ -4,19 +4,27 @@
 def reverseOnlyLetters(S: str) -> str:
 
     slst = list(S)
-    a = []
+    li = 0
+    ri = len(slst) - 1
 
-    for i in range(len(slst)):
-        if (slst[i]).isalpha():
-            a.append(slst[i])
-            slst[i] = None
+    while li <= ri:
+        l = slst[li]
+        r = slst[ri]
 
-    for i in range(len(slst)):
-        if slst[i] == None:
-            slst[i] = a.pop()
+        if l.isalpha() and r.isalpha():
+            slst[li], slst[ri] = slst[ri], slst[li]
+            li += 1
+            ri -= 1
+        elif l.isalpha() and (not r.isalpha()):
+            ri -= 1
+        elif (not l.isalpha()) and r.isalpha():
+            li += 1
+        else:
+            li += 1
+            ri -= 1
 
     return "".join(slst)
 
 s = "a-bC-dEf-ghIj"
-#s = "Test1ng-Leet=code-Q!"
+s = "Test1ng-Leet=code-Q!"
 print(reverseOnlyLetters(s))
