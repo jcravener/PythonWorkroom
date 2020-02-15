@@ -20,6 +20,6 @@ def tribonacci(n: int) -> int:
             rt = dp[n]
     return rt
 
-for n in range(26):
+for n in range(37):
     print(tribonacci(n))
 
