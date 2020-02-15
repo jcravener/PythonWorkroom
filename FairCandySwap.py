@@ -7,9 +7,9 @@ def fairCandySwap(A:[int], B:[int]) -> [int]:
     bset = set(B)
     tmp = 0
 
-    #sum(A) - x + y = sum(B) - y + x
-    #2*y = sum(B) - sum(A) + 2*x
-    #y = (sum(B) - sum(A))//2 + x
+    # sum(A) - x + y = sum(B) - y + x
+    # 2*y = sum(B) - sum(A) + 2*x
+    # y = (sum(B) - sum(A))//2 + x
 
     for x in A:
         tmp = ((bsum - asum)//2) + x
