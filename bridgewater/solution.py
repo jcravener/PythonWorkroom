@@ -52,8 +52,3 @@ class conrecord:
 tc = "testcase0"
 il = readfile(tc)
 print(generateAndPrintConcordance(il))
-
-#s = "Wait a minute. Wait a minute, Doc. Just wait a minute! Hold on"
-#s = 'This is not'
-#print()
-#print(sentsplit(s))
