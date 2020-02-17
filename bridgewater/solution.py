@@ -11,7 +11,6 @@ def generateAndPrintConcordance(inputLines):
     
     lns = inputLines.pop(0)
     a = []
-    b = []
     d = {}
     snt = ''
     for l in inputLines:
@@ -26,12 +25,14 @@ def generateAndPrintConcordance(inputLines):
         for w in re.split(r'\s',a[i]):
             k = re.sub(r'[^A-Za-z]', '', w.lower())
             if k not in d:
-                d[k] = conrecord(1,[i])
+                d[k] = conrecord(1,[str(i+1)])
             else:
                 d[k].count += 1
-                d[k].sentance.append(i)
+                d[k].sentence.append(str(i+1))
 
-    return d
+    for k in sorted(d.keys()):
+        snt = k + ": {" + str(d[k].count) +  ':' + ','.join(d[k].sentence) + '}'
+        print(snt)
 
 def sentsplit(s:str):
     pat = re.compile(r'[\.\?\!]\s[A-Z]')
@@ -46,7 +47,7 @@ def sentsplit(s:str):
 class conrecord:
     def __init__(self, cnt:int, snt:[int]):
         self.count = cnt
-        self.sentance = snt
+        self.sentence = snt
 
 
 tc = "testcase0"
