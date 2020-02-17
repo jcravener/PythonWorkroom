@@ -6,7 +6,6 @@ def readfile(fn:str):
     a = [l.strip() for l in f.readlines()]
     return a
     
-
 def generateAndPrintConcordance(inputLines):
     
     lns = inputLines.pop(0)
