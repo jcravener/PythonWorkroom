@@ -9,10 +9,16 @@ def readfile(fn:str):
 
 def generateAndPrintConcordance(inputLines):
     
+    lns = inputLines.pop(0)
     a = []
+    snt = ''
     for l in inputLines:
-        a.extend(sentsplit(l))
-    
+        for s in sentsplit(l):
+            if s[len(s)-1] != '.' and s[len(s)-1] != '?' and s[len(s)-1] != '!':
+                snt += '' + s
+            else:
+                a.append(snt + ' ' + s)
+                snt = ''
     return a
 
 def sentsplit(s:str):
@@ -30,9 +36,7 @@ tc = "testcase0"
 il = readfile(tc)
 print(generateAndPrintConcordance(il))
 
-s = "Wait a minute. Wait a minute, Doc. Just wait a minute! Hold on!!"
-s = 'This is not'
-#pat = re.compile(r'[\.\?\!]\s[A-Z]')
-#r = re.search(pat,s)
-
-#print(sentsplit(s))
+s = "Wait a minute. Wait a minute, Doc. Just wait a minute! Hold on"
+#s = 'This is not'
+print()
+print(sentsplit(s))
