@@ -11,15 +11,27 @@ def generateAndPrintConcordance(inputLines):
     
     lns = inputLines.pop(0)
     a = []
+    b = []
+    d = {}
     snt = ''
     for l in inputLines:
         for s in sentsplit(l):
             if s[len(s)-1] != '.' and s[len(s)-1] != '?' and s[len(s)-1] != '!':
-                snt += '' + s
+                snt += ' ' + s
             else:
-                a.append(snt + ' ' + s)
+                a.append((snt + ' ' + s).strip())
                 snt = ''
-    return a
+    
+    for i in range(len(a)):
+        for w in re.split(r'\s',a[i]):
+            k = re.sub(r'[^A-Za-z]', '', w.lower())
+            if k not in d:
+                d[k] = conrecord(1,[i])
+            else:
+                d[k].count += 1
+                d[k].sentance.append(i)
+
+    return d
 
 def sentsplit(s:str):
     pat = re.compile(r'[\.\?\!]\s[A-Z]')
@@ -31,12 +43,17 @@ def sentsplit(s:str):
     else:
         return sentsplit(s[:r.start()+1]) + sentsplit(s[r.end()-1:])
 
+class conrecord:
+    def __init__(self, cnt:int, snt:[int]):
+        self.count = cnt
+        self.sentance = snt
+
 
 tc = "testcase0"
 il = readfile(tc)
 print(generateAndPrintConcordance(il))
 
-s = "Wait a minute. Wait a minute, Doc. Just wait a minute! Hold on"
+#s = "Wait a minute. Wait a minute, Doc. Just wait a minute! Hold on"
 #s = 'This is not'
-print()
-print(sentsplit(s))
+#print()
+#print(sentsplit(s))
