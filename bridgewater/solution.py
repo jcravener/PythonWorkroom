@@ -34,7 +34,7 @@ def generateAndPrintConcordance(inputLines):
         print(snt)
 
 def sentsplit(s:str):
-    pat = re.compile(r'[\.\?\!]\s[A-Z]')
+    pat = re.compile(r'[\.\?\!]\s+[A-Z]')
     r = re.search(pat, s)
     a = []
     if r == None:
@@ -49,6 +49,7 @@ class conrecord:
         self.sentence = snt
 
 
-tc = "testcase0"
+tc = "testcase1"
+tc = "oracle_testcase"
 il = readfile(tc)
 print(generateAndPrintConcordance(il))
