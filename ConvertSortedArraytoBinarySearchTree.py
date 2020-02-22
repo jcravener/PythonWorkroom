@@ -23,6 +23,18 @@ def inorder_DFS(rt: TreeNode):
     
     return l
 
+def BFS(rt: TreeNode):
+    l = []
+    q = [rt]
+
+    while len(q) != 0:
+        cur = q.pop(0)
+        l.append(cur.val)
+        if cur.left: q.append(cur.left)
+        if cur.right: q.append(cur.right)
+    
+    return l
+
 def sortedArrayToBST(nums: [int]) -> TreeNode:
 
     if len(nums) == 0:
@@ -36,7 +48,7 @@ def sortedArrayToBST(nums: [int]) -> TreeNode:
     
     return rt
 
-
 a = [-10,-3,0,5,9]
 print(inorder_DFS(sortedArrayToBST(a)))
+print(BFS(sortedArrayToBST(a)))
 
