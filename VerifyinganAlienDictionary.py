@@ -23,9 +23,11 @@ def isAlienSorted(words: [str], order: str) -> bool:
 words = ["hello","leetcode"]
 order = "hlabcdefgijkmnopqrstuvwxyz"
 print(isAlienSorted(words, order))
+print()
 words = ["word","world","row"]
 order = "worldabcefghijkmnpqstuvxyz"
 print(isAlienSorted(words, order))
+print()
 words = ["apple","app"]
 order = "abcdefghijklmnopqrstuvwxyz"
 print(isAlienSorted(words, order))
