@@ -11,19 +11,19 @@ class TreeNode:
 
 def findTarget(root: TreeNode, k: int) -> bool:
 
-    right = rt.val + rt.right.val
-    left = rt.val + rt.right.val
-    children = rt.left.value + rt.right.value
+    l = inorderDFS(root)
 
-    if right == k:
-        return True
-    if left == k:
-        return True
-    if children == k:
-        return True
+    #  check if the sum of the last 2 elements are < target first.
+    #  if they not, the remaining combination of all others cannot be.
+    if sum(l[len(l)-2:]) < k:
+        return False
+    
+    for i in range(1,len(l)):
+        if l[i] + l[i-1] == k:
+            return True
+        
+    return False
 
-
-    return None
 
 def inorderDFS(nd: TreeNode):
     if nd == None:
@@ -64,3 +64,4 @@ rt.right.right = TreeNode(7)
 
 print(inorderDFS(rt))
 print(BFS(rt))
+print(findTarget(rt,9))
