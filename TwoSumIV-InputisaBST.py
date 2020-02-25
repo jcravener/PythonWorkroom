@@ -10,6 +10,19 @@ class TreeNode:
         self.right = None
 
 def findTarget(root: TreeNode, k: int) -> bool:
+
+    right = rt.val + rt.right.val
+    left = rt.val + rt.right.val
+    children = rt.left.value + rt.right.value
+
+    if right == k:
+        return True
+    if left == k:
+        return True
+    if children == k:
+        return True
+
+
     return None
 
 def inorderDFS(nd: TreeNode):
