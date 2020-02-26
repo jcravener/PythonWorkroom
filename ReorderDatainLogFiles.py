@@ -4,14 +4,10 @@
 def reorderLogFiles(logs: [str]) -> [str]:
     
     let = [l for l in logs if not (l.split(' ')[1]).isdecimal()]
-    let = sorted(let, key=lambda x: x.split(" ")[1])
-    let = sorted(let, key=lambda x: x.split(" ")[2])
-    dig = [l for l in logs if (l.split(' ')[1]).isdecimal()]
+    let = sorted(let, key=lambda x: x.split(" ", 1)[0])
+    let = sorted(let, key=lambda x: x.split(" ", 1)[1])
     
-    s = '1'
-    s.isdecimal()
-
-    let.extend(dig)
+    let.extend([l for l in logs if (l.split(' ')[1]).isdecimal()])
     return let
 
 logs = ["dig1 8 1 5 1","let1 art can","dig2 3 6","let2 own kit dig","let3 art zero"]
