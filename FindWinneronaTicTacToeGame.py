@@ -26,27 +26,27 @@ def tictactoe(moves: [[int]]) -> str:
     #-- check all rows
     for r in board:
         st = set(r)
-        if len(st) == 1:
-            return st.pop()
-        elif '' in st:
+        if '' in st:
             pflag = True
+        elif len(st) == 1:
+            return st.pop()
      
     #-- check all columns
     for j in range(len(board)):
         c = [board[i][j] for i in range(len(board))]
         st = set(c)
-        if len(st) == 1:
-            return st.pop()
-        elif '' in st:
+        if '' in st:
             pflag = True
+        elif len(st) == 1:
+            return st.pop()
     
     #-- check forward diag
     d = [board[i][i] for i in range(len(board))]
     st = set(d)
-    if len(st) == 1:
-        return st.pop()
-    elif '' in st:
+    if '' in st:
         pflag = True
+    elif len(st) == 1:
+        return st.pop()
 
     d.clear()
 
@@ -56,10 +56,10 @@ def tictactoe(moves: [[int]]) -> str:
         d.append(board[i][j])
         i -= 1
     st = set(d)
-    if len(st) == 1:
-        return st.pop()
-    elif '' in st:
+    if '' in st:
         pflag = True
+    elif len(st) == 1:
+        return st.pop()
 
     if pflag:
         return 'Pending'
@@ -69,4 +69,5 @@ def tictactoe(moves: [[int]]) -> str:
 moves = [[0,0],[2,0],[1,1],[2,1],[2,2]]
 #moves = [[0,0],[1,1],[0,1],[0,2],[1,0],[2,0]]
 #moves = [[0,0],[1,1],[2,0],[1,0],[1,2],[2,1],[0,1],[0,2],[2,2]]
+moves = [[0,0],[1,1]]
 print(tictactoe(moves))
