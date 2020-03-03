@@ -6,6 +6,8 @@ def tictactoe(moves: [[int]]) -> str:
     
     player = ''
     board = [['' for _ in range(3)] for _ in range(3)]
+    st = set()
+    pflag = False
 
     for i in range(len(moves)):
         if i%2 == 0:
@@ -17,34 +19,54 @@ def tictactoe(moves: [[int]]) -> str:
         c = moves[i][1]
 
         board[r][c] = player
-
+    
     for r in board:
         print(r)
 
-    return None
+    #-- check all rows
+    for r in board:
+        st = set(r)
+        if len(st) == 1:
+            return st.pop()
+        elif '' in st:
+            pflag = True
+     
+    #-- check all columns
+    for j in range(len(board)):
+        c = [board[i][j] for i in range(len(board))]
+        st = set(c)
+        if len(st) == 1:
+            return st.pop()
+        elif '' in st:
+            pflag = True
+    
+    #-- check forward diag
+    d = [board[i][i] for i in range(len(board))]
+    st = set(d)
+    if len(st) == 1:
+        return st.pop()
+    elif '' in st:
+        pflag = True
 
-def traverse(board: [[str]], i, j, player: str):
-    if  0 > i > len(board[0]):
-        return None
-    if 0 > j > len(board):
-        return None
-    if board[i][j] != player:
-        return None
-    else:
-        traverse(board, i, j+1, player)
-        traverse(board, i+1, j, player)
-        traverse(board, i+1, j+1, player)
-        traverse(board, i-1, j-1, player)
-    return True
+    d.clear()
 
+    #-- check backward diag
+    i = len(board) - 1
+    for j in range(len(board)):  #-- check all columns
+        d.append(board[i][j])
+        i -= 1
+    st = set(d)
+    if len(st) == 1:
+        return st.pop()
+    elif '' in st:
+        pflag = True
 
-# The above code just print out all the moves on the board.
-# To solve this programatically, I think I need to do a DFS
-# and look for a winning pattern.  This would be to DFS each
-# cell and see if up/down, left/right, accross forward/accross
-# back exists for the player on the starting cell.
+    if pflag:
+        return 'Pending'
+
+    return 'Draw'
 
 moves = [[0,0],[2,0],[1,1],[2,1],[2,2]]
-moves = [[0,0],[1,1],[0,1],[0,2],[1,0],[2,0]]
-moves = [[0,0],[1,1],[2,0],[1,0],[1,2],[2,1],[0,1],[0,2],[2,2]]
+#moves = [[0,0],[1,1],[0,1],[0,2],[1,0],[2,0]]
+#moves = [[0,0],[1,1],[2,0],[1,0],[1,2],[2,1],[0,1],[0,2],[2,2]]
 print(tictactoe(moves))
