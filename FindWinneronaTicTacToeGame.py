@@ -23,6 +23,21 @@ def tictactoe(moves: [[int]]) -> str:
 
     return None
 
+def traverse(board: [[str]], i, j, player: str):
+    if  0 > i > len(board[0]):
+        return None
+    if 0 > j > len(board):
+        return None
+    if board[i][j] != player:
+        return None
+    else:
+        traverse(board, i, j+1, player)
+        traverse(board, i+1, j, player)
+        traverse(board, i+1, j+1, player)
+        traverse(board, i-1, j-1, player)
+    return True
+
+
 # The above code just print out all the moves on the board.
 # To solve this programatically, I think I need to do a DFS
 # and look for a winning pattern.  This would be to DFS each
