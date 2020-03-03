@@ -23,6 +23,12 @@ def tictactoe(moves: [[int]]) -> str:
 
     return None
 
+# The above code just print out all the moves on the board.
+# To solve this programatically, I think I need to do a DFS
+# and look for a winning pattern.  This would be to DFS each
+# cell and see if up/down, left/right, accross forward/accross
+# back exists for the player on the starting cell.
+
 moves = [[0,0],[2,0],[1,1],[2,1],[2,2]]
 moves = [[0,0],[1,1],[0,1],[0,2],[1,0],[2,0]]
 moves = [[0,0],[1,1],[2,0],[1,0],[1,2],[2,1],[0,1],[0,2],[2,2]]
