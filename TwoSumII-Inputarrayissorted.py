@@ -3,7 +3,7 @@
 # LeetCode 167. Two Sum II - Input array is sorted
 
 # First solution was slow: O(n**2) even though I chopped the list a bit in the beginning.
-# Since the input array is sorted, need to look for a way to use so,e kind of binary
+# Since the input array is sorted, need to look for a way to use some kind of binary
 # search technique.  
 #
 
