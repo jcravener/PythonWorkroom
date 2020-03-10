@@ -2,6 +2,11 @@
 
 # LeetCode 167. Two Sum II - Input array is sorted
 
+# First solution was slow: O(n**2) even though I chopped the list a bit in the beginning.
+# Since the input array is sorted, need to look for a way to use so,e kind of binary
+# search technique.  
+#
+
 def twoSum(numbers: [int], target: int) -> [int]:
     n = [i for i in numbers if i <= target]
     if len(n) < len(numbers):
